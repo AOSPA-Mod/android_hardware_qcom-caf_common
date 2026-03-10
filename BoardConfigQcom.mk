@@ -450,6 +450,16 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/wlan \
     hardware/qcom-caf/wlan/qcwcn
 
+# SEPolicy
+ifneq ($(TARGET_EXCLUDE_QCOM_SEPOLICY),true)
+ifneq ($(call is-board-platform-in-list, msm8937 msm8953 msm8998 sdm660),true)
+include device/qcom/sepolicy_vndr/SEPolicy.mk
+else # if (8937 || 8953 || 8998 || 660)
+include device/qcom/sepolicy/SEPolicy.mk
+endif # !(8937 || 8953 || 8998 || 660)
+include hardware/qcom-caf/common/sepolicy/SEPolicy.mk
+endif # Exclude QCOM SEPolicy
+
 # Verified Boot
 BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
