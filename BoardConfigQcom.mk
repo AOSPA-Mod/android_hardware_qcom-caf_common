@@ -447,8 +447,8 @@ endif
 
 # Add wlan to PRODUCT_SOONG_NAMESPACES
 PRODUCT_SOONG_NAMESPACES += \
-    hardware/qcom-caf/wlan \
-    hardware/qcom-caf/wlan/qcwcn
+    hardware/qcom/wlan \
+    hardware/qcom/wlan/qcwcn
 
 # Verified Boot
 BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
